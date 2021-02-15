@@ -11,6 +11,7 @@ import {reducers} from './store/reducers'
 import {RegisterEffect} from './store/effects/register.effect'
 import {HttpClientModule} from '@angular/common/http'
 import {BackendErrorMessagesModule} from '../../shared/modules/backendErrorsModule/backendErrorMessages.module'
+import {PersistanceService} from '../../shared/service/persistance.service'
 
 const routes: Routes = [
   {
@@ -30,6 +31,6 @@ const routes: Routes = [
     BackendErrorMessagesModule
   ],
   declarations: [RegisterComponent],
-  providers: [AuthService]
+  providers: [AuthService, PersistanceService]
 })
 export class AuthModule {}
