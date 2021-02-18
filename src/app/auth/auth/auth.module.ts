@@ -12,7 +12,7 @@ import {reducers} from './store/reducers'
 import {RegisterEffect} from './store/effects/register.effect'
 import {LoginEffect} from './store/effects/login.effect'
 import {HttpClientModule} from '@angular/common/http'
-import {BackendErrorMessagesModule} from '../../shared/modules/backendErrorsModule/backendErrorMessages.module'
+import {BackendErrorMessagesModule} from '../../shared/modules/backendErrorMessages.module'
 import {PersistanceService} from '../../shared/service/persistance.service'
 
 const routes: Routes = [
