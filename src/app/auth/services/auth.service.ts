@@ -6,15 +6,27 @@ import { RegisterRequestInterface } from '../auth/types/registerRequest.interfac
 import { CurrentUserInterface } from '../types/currentUser.interface';
 import { environment } from '../../../environments/environment.prod';
 import { AuthResponseInterface } from '../auth/types/authResponse.interface';
+import { LoginRequestInterface } from '../auth/types/loginRequest.interface';
 
 @Injectable()
 export class AuthService {
   constructor(private htpp: HttpClient) {}
 
+  getUser(response: AuthResponseInterface): CurrentUserInterface {
+    return response.user;
+  }
+
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/users';
     return this.htpp
       .post<AuthResponseInterface>(url, data)
-      .pipe(map((response: AuthResponseInterface) => response.user));
+      .pipe(map(this.getUser));
+  }
+
+  login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/users/login';
+    return this.htpp
+      .post<AuthResponseInterface>(url, data)
+      .pipe(map(this.getUser));
   }
 }
