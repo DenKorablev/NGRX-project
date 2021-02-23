@@ -11,6 +11,7 @@ import {EffectsModule} from '@ngrx/effects'
 import {reducers} from './store/reducers'
 import {RegisterEffect} from './store/effects/register.effect'
 import {LoginEffect} from './store/effects/login.effect'
+import {GetCurrentUserEffect} from './store/effects/getCurrentUser.effect'
 import {HttpClientModule} from '@angular/common/http'
 import {BackendErrorMessagesModule} from '../../shared/modules/backendErrorMessages.module'
 import {PersistanceService} from '../../shared/service/persistance.service'
@@ -33,7 +34,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect, GetCurrentUserEffect]),
     BackendErrorMessagesModule
   ],
   declarations: [
